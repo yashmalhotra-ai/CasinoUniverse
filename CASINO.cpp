@@ -54,7 +54,7 @@ int main()
 				srand((time(0)));
 				RandomNumber = rand() % 10 + 1;
 				cout << "Guess Number " << Name<<": ";
-				cout << RandomNumber;
+				
 				cin >> guess;
 				if (guess == RandomNumber) {
 					cout << "Great,You Guessed That Lucky Number\n";
