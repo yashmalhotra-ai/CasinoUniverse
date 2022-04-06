@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstdlib>			//To use Random function
-#include<string>			//string input
+#include<string>
+#include<bits-stdc++.h>//string input
 using namespace std;
 void rules() {							//TO Display Rules of game
 	system("cls");
@@ -11,7 +12,7 @@ void rules() {							//TO Display Rules of game
 	cout << "					\033[1;41mBetting Amount should not be more than 1000000 \033[0m\n\n";
 	cout << "					\033[1;41mWrong bet, you will lose amount\033[0m\n\n";
 }
-int betted(int Inv) {
+int betted(int Inv) {//Getting Betting Amount EveryTime Player wants to bit
 	int BettingAmount;
 	do {
 		cout << "Enter the amount that you want to bit\n";
@@ -31,15 +32,16 @@ int main()
 	char choice = 'a';
 	int InvestedAmount;
 	rules();
+	
 	do {
-		cout << "Add Balance to your account To start the game\n";
-		cin >> InvestedAmount;
-		if (InvestedAmount > 1000000) {
-			cout << "\033[1;41mYou have entered invalid amount\033[0m\n";
-			cout << "enter valid amount\n";
-		}
-	} while (InvestedAmount > 1000000);
-	do {
+		do {//Getting Amount to start the game 
+			cout << "Add Balance to your account To start the game\n";
+			cin >> InvestedAmount;
+			if (InvestedAmount > 1000000) {
+				cout << "\033[1;41mYou have entered invalid amount\033[0m\n";
+				cout << "enter valid amount\n";
+			}
+		} while (InvestedAmount > 1000000);
 		
 		string Name;
 		int  BettingAmount,guess, RandomNumber;
@@ -48,13 +50,13 @@ int main()
 		getline(cin, Name);
 		cout << "Welcome Casino Game " << Name << "\n";
 		cout <<"\nYour Current Balance "<<InvestedAmount<<"\n";
-		
+		//Here game start
 			do {
 				BettingAmount = betted(InvestedAmount);
 				srand((time(0)));
 				RandomNumber = rand() % 10 + 1;
 				cout << "Guess Number " << Name<<": ";
-				
+				cout << RandomNumber;
 				cin >> guess;
 				if (guess == RandomNumber) {
 					cout << "Great,You Guessed That Lucky Number\n";
@@ -82,6 +84,7 @@ int main()
 			} while (choice=='Y' or choice=='y');
 			cout << "THANKS FOR PLAYING CASINO GAME IN CASINO UNIVERSE\n\n";
 			cout << "\033[1;44mHere is your Balance Amount\033[0m " << Name << " " << InvestedAmount<<"\n\n";
+			//game end
 			cout << "If you are New Player then press Y/y\n\n";
 			cin >> choice;
 	} while (choice == 'Y' or choice == 'y');
